@@ -188,6 +188,32 @@
         .whatsapp { background: var(--whatsapp-color); box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2); }
         .telegram { background: var(--telegram-color); box-shadow: 0 4px 12px rgba(0, 136, 204, 0.2); }
 
+        /* Maintenance Floating Chat Box */
+        .maintenance-floating-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--purple-main);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 2500;
+            border: 2px solid #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: pulseBox 2s infinite;
+        }
+        @keyframes pulseBox {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         /* bKash Modal */
         #bkash-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
         .bkash-content { background: #fff; width: 92%; max-width: 360px; border-radius: 20px; overflow: hidden; color: #333; padding-bottom: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
@@ -309,9 +335,14 @@
     <div class="box">
         <h2>Contact Us</h2>
         <p class="about-text" style="text-align: center; margin-bottom: 20px;">Need help with your order? Feel free to reach out to our dedicated support team anytime through the platforms below:</p>
-        <a href="https://wa.me/" target="_blank" class="contact-btn whatsapp">💬 Connect via WhatsApp</a>
-        <a href="https://t.me/RedRrox" target="_blank" class="contact-btn telegram">✈ Connect via Telegram</a>
+        <a href="javascript:void(0);" onclick="alert('Support currently unavailable.')" class="contact-btn whatsapp">💬 Connect via WhatsApp</a>
+        <a href="javascript:void(0);" onclick="alert('Support currently unavailable.')" class="contact-btn telegram">✈ Connect via Telegram</a>
     </div>
+</div>
+
+<!-- Website Under Maintenance Floating Widget -->
+<div class="maintenance-floating-box">
+    🛠️ Website Under Maintenance
 </div>
 
 <div id="bkash-modal">
@@ -321,7 +352,7 @@
             <h3 style="font-size: 14px; margin-bottom: 10px;">আপনার বিকাশ TxID দিন</h3>
             <input type="text" class="trx-input-box" id="trx-input" placeholder="ট্রানজেকশন আইডি দিন" maxlength="10">
             <p style="font-size: 12px; margin-top: 10px; text-align: left; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 10px; line-height: 1.4;">
-                ● send money করুনঃ <b>01779772201</b> <button onclick="copyNum()" style="padding:2px 6px; font-size:10px; border-radius:4px; border:none; background:#fff; cursor:pointer;">Copy</button><br>
+                ● send money করুনঃ <b>(Number Removed)</b> <br>
                 ● টাকার পরিমাণঃ ৳ <b id="pay-amount">0</b><br>
                 <span style="color: #ffe4e6; font-weight: bold; display: block; margin-top: 5px; background: rgba(0,0,0,0.15); padding: 5px; border-radius: 4px;">⚠️ সতর্কবার্তা: অবশ্যই "Send Money" করতে হবে। মোবাইল রিচার্জ বা ক্যাশআউট করলে পেমেন্ট গ্রহণযোগ্য হবে না!</span>
             </p>
@@ -520,7 +551,6 @@
     }
 
     function closeSuccess() { showPage('home'); document.getElementById('success-popup').style.display = 'none'; }
-    function copyNum() { navigator.clipboard.writeText("01779772201"); alert("Number Copied!"); }
 
     function updateNotifyBox(uid, pack) {
         const notify = document.getElementById('notify-box');
